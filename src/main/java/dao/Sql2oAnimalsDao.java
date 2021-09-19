@@ -38,4 +38,16 @@ public class Sql2oAnimalsDao implements AnimalsDao {
                     .executeAndFetchFirst(Animals.class);
         }
     }
+    @Override
+    public void update(int id, String name){
+        String sql = "UPDATE animals SET name = :name WHERE id=:id";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("id", name)//check later for possible error
+                    .addParameter("name", name)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 }
