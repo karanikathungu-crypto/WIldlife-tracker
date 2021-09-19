@@ -1,6 +1,7 @@
 package dao;
 import models.Endangered_animals;
 import models.Animals;
+import org.junit.After;
 import org.junit.Before;
 import org.sql2o.*;
 import static org.junit.Assert.*;
@@ -16,6 +17,10 @@ public class Sql2oAnimalsDaoTest
         Sql2o sql2o = new Sql2o(connectionString, "","");
         animalsDao = new Sql2oAnimalsDao(sql2o);
         conn = sql2o.open();
+    }
+    @After
+    public void tearDown() throws Exception{
+        conn.close();
     }
 
 }
