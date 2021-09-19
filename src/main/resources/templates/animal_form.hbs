@@ -1,0 +1,37 @@
+    {{#partial "title" }}
+      Fill in animal sighted
+    {{/partial}}
+
+    <!--form.hbs.-->
+    {{#partial "content"}}
+        <div class = "sightingform">Sighting Form</div>
+            <div class = "viewForm">
+                <form>
+                    <div id = "name">
+                        <h2 class = "name">Name</h2>
+                        <input class = "animalName" type="text" name="animal_name" id="animal_name" required><br>
+
+                        <h2 class = "id">Animal Id</h2>
+                        <input class = "animalId" type="number" name = "animal_Id" id = "animal_Id" required>
+
+                        <h2 class = "location">Location</h2>
+                        <select class = "option" name = "location">
+                            <option>Zone A</option>
+                            <option>Zone B</option>
+                            <option>Zone C</option>
+                            <option>Zone D</option>
+                        </select>
+
+
+
+
+                    </div>
+
+                </form>
+
+
+            </div>
+
+    {{/partial}}
+
+    {{> layout.hbs}}
