@@ -3,6 +3,7 @@ import models.Endangered_animals;
 import models.Animals;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.sql2o.*;
 import static org.junit.Assert.*;
 
@@ -23,4 +24,19 @@ public class Sql2oAnimalsDaoTest
         conn.close();
     }
 
+    @Test
+    public void add_addingAnimalSetsId() throws Exception {
+        Animals animals = new Animals(1,"Lion");
+        int firstAnimalId = animals.getId();
+        animalsDao.add(animals);
+        assertNotEquals(firstAnimalId, animals.getId());
+    }
+
+    @Test
+    public void existingAnimalsCanBeFoundById() throws Exception {
+        Animals animals = new Animals(1,"Elephant");
+        animalsDao.add(animals);
+        Animals foundAnimal = animalsDao.findById(animals.getId());
+        assertEquals(animals, foundAnimal);
+    }
 }
