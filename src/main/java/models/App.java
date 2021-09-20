@@ -16,6 +16,11 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         },new HandlebarsTemplateEngine());
 
+        get("/animal_form",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "animal_form.hbs");
+        },new HandlebarsTemplateEngine());
+
 
     }
 }
