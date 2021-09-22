@@ -20,6 +20,16 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "animal_form.hbs");
         },new HandlebarsTemplateEngine());
+        post("/Success", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("animal_Name");
+            int id = Integer.parseInt(request.queryParams("animal_Id"));//changed it to parse int because of error
+            Animals seenAnimal = new Animals(id, name);
+            request.session().attribute("item", seenAnimal );
+            model.put("item", request.session().attribute("item"));
+            model.put("seenAnimal", seenAnimal);
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
     }
