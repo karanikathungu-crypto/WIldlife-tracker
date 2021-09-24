@@ -39,4 +39,8 @@ public class Sql2oAnimalsDaoTest
         Animals foundAnimal = animalsDao.findById(animals.getId());
         assertEquals(animals, foundAnimal);
     }
+
+//    @Test
+//    public void () {
+//    }
 }

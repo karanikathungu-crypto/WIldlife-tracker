@@ -2,6 +2,8 @@ package models;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import dao.Sql2oAnimalsDao;
 import models.Animals;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -9,6 +11,8 @@ import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
+        Sql2oAnimalsDao sql2oAnimalsDao = new Sql2oAnimalsDao();
+
         staticFileLocation("/public");
 
         get("/",(request, response)->{
@@ -20,16 +24,26 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "animal_form.hbs");
         },new HandlebarsTemplateEngine());
-        post("/Success", (request, response) -> {
+        post("/Success/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            String name = request.queryParams("animal_Name");
-            int id = Integer.parseInt(request.queryParams("animal_Id"));//changed it to parse int because of error
-            Animals seenAnimal = new Animals(id, name);
-            request.session().attribute("item", seenAnimal );
-            model.put("item", request.session().attribute("item"));
-            model.put("seenAnimal", seenAnimal);
+            String name = request.queryParams("name");
+            String location = request.queryParams("location");
+            String rangerName = request.queryParams("rangerName");
+            model.put("name", name);
+            model.put("location", location);
+            model.put("rangerName", rangerName);
+            Animals seenAnimal = new Animals(name, location, rangerName);
+            sql2oAnimalsDao.add(seenAnimal);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
+//        get("/Success", (request, response)->{
+//            Map<String, Object> model = new HashMap<>();
+//            ArrayList<Animals> animal = Animals.getAllInstances();
+//            model.put("animal", animal);
+//            return new ModelAndView(model, "Success.hbs");
+//        }, new HandlebarsTemplateEngine());
+
+
 
 
     }

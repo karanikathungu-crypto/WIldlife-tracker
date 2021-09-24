@@ -5,10 +5,31 @@ import java.util.ArrayList;
 public class Animals implements Spotted_animal{
     private int id;
     private String name;
+    private String location;
 
-    public Animals(int id, String name){
-        this.id = id;
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getRangerName() {
+        return rangerName;
+    }
+
+    public void setRangerName(String rangerName) {
+        this.rangerName = rangerName;
+    }
+
+    private String rangerName;
+    private static ArrayList<Animals> mInstances = new ArrayList<>();
+
+    public Animals( String name, String location, String rangerName){
         this.name = name;
+        this.location = location;
+        this.rangerName = rangerName;
     }
 
     @Override
@@ -39,6 +60,11 @@ public class Animals implements Spotted_animal{
     public String getName(){
         return name;
     }
+
+    public static ArrayList<Animals> getAllInstances() {
+        return mInstances;
+    }
+
     @Override
     public void seenAnimal()
     {

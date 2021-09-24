@@ -4,17 +4,21 @@ import org.sql2o.*;
 import java.util.List;
 
 public class Sql2oAnimalsDao implements AnimalsDao {
-    private final Sql2o sql2o;
 
-    public Sql2oAnimalsDao(Sql2o sql2o){
-        this.sql2o = sql2o;
-    }
+    Sql2o sql2o= new Sql2o("jdbc:postgresql://localhost:5432/wildlife","ken","1234");
+//    private final Sql2o sql2o;
+
+//    public Sql2oAnimalsDao(Sql2o sql2o){
+//        this.sql2o = sql2o;
+//    }
+
 
     @Override
     public void add(Animals animals){
-        String sql = "INSERT INTO animals (id, name) VALUES(:id, :name)";
+        String sql = "INSERT INTO animals (name, location, rangerName) VALUES(:name, :location, :rangerName)";
         try(Connection conn = sql2o.open()){
-            int id = (int) conn.createQuery(sql, true)
+            int id = (int) conn.createQuery(sql,
+true)
                     .bind(animals)
                     .executeUpdate()
                     .getKey();

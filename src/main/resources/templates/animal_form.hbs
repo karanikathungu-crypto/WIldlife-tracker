@@ -6,31 +6,51 @@
     {{#partial "content"}}
         <div class = "sightingform">Sighting Form</div>
             <div class = "viewForm">
-                <form>
-                    <div id = "name">
-                        <h2 class = "name">Name</h2>
-                        <input class = "animalName" type="text" name="animal_name" id="animal_name" required><br>
+                <form action ="/Success/new" method="post">
+                    <div id = "names">
+                        <h2 class = "names">Animal name</h2>
+                        <input id="name" class = "animalName" type="text" name="name"  required><br>
+                    </div>
 
-                        <h2 class = "id">Animal Id</h2>
-                        <input class = "animalId" type="number" name = "animal_Id" id = "animal_Id" required>
+{{!--                         <h2 class = "id">Animal Id</h2> --}}
+{{!--                         <input id ="animal_Id" class = "animalId" type="number" name = "animal_Id" id = "animal_Id" required><br> --}}
 
+                        <h2 class = "ranger">Ranger Name</h2>
+                        <input class ="rangerName" type="text" name = "rangerName" id = "rangerName" required><br>
                         <h2 class = "location">Location</h2>
-                        <select class = "option" name = "location">
+                        <select class = "option" name = "location" id="location">
                             <option>Zone A</option>
                             <option>Zone B</option>
                             <option>Zone C</option>
                             <option>Zone D</option>
                         </select>
 
+{{!--                         <h2>Endangered species additional required information</h2><br> --}}
+{{!--                         <h2 class ="health-status">Health status</h2> --}}
+{{!--                         <label for ="healthy">Healthy</label> --}}
+{{!--                         <input type ="radio" id ="healthy" name = "current_health" value = "Healthy"> --}}
+{{!--                         <label for ="ill">Ill</label> --}}
+{{!--                         <input type ="radio" id ="ill" name = "current_health" value = "Ill"> --}}
+{{!--                         <label for ="okay">Okay</label> --}}
+{{!--                         <input type ="radio" id ="okay" name = "current_health" value = "Okay"> --}}
+{{!--                         <h2>Animal age</h2> --}}
+{{!--                         <label for ="newborn">Newborn</label> --}}
+{{!--                         <input type ="radio" id ="newborn" name = "age" value = "Newborn"> --}}
+{{!--                         <label for ="young">Young</label> --}}
+{{!--                         <input type ="radio" id ="young" name = "age" value = "Young"> --}}
+{{!--                         <label for ="adult">Adult</label> --}}
+{{!--                         <input type ="radio" id ="adult" name = "age" value = "Adult"> --}}
+
+                <button type ="submit">Submit</button>
 
 
 
-                    </div>
+             </div>
 
                 </form>
 
 
-            </div>
+
 
     {{/partial}}
 

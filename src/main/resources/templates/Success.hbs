@@ -1,0 +1,22 @@
+{{#partial "title"}}
+    Success animal has been recorded
+{{/partial}}
+
+{{#partial "content"}}
+{{!--     {{#if seenAnimal}} --}}
+{{!--     {{#each seenAnimal}} --}}
+        <p>Animal name:{{ name }}</p>
+{{!--         <p>Animal id:{{ seenAnimal.name }}</p> --}}
+
+
+{{!--     {{/each}} --}}
+
+{{!--     {{#else}} --}}
+        <p>Please fill in the form regarding animal spotted</p>
+        <a class= 'btn' href="/animal_form">Report Sighting</a>
+{{!--     {{/if}} --}}
+
+
+{{/partial}}
+
+{{>layout.hbs}}
