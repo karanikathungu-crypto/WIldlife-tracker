@@ -15,8 +15,8 @@ public class Sql2oAnimalsDaoTest
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "","");
-        animalsDao = new Sql2oAnimalsDao(sql2o);
+        Sql2o sql2o = new Sql2o(connectionString, "kenneth","1234");
+        animalsDao = new Sql2oAnimalsDao();
         conn = sql2o.open();
     }
     @After
@@ -26,7 +26,7 @@ public class Sql2oAnimalsDaoTest
 
     @Test
     public void add_addingAnimalSetsId() throws Exception {
-        Animals animals = new Animals(1,"Lion");
+        Animals animals = new Animals("lion","zone A", "Mark");
         int firstAnimalId = animals.getId();
         animalsDao.add(animals);
         assertNotEquals(firstAnimalId, animals.getId());
@@ -34,7 +34,7 @@ public class Sql2oAnimalsDaoTest
 
     @Test
     public void existingAnimalsCanBeFoundById() throws Exception {
-        Animals animals = new Animals(1,"Elephant");
+        Animals animals = new Animals("crocodile", "zone B", "John");
         animalsDao.add(animals);
         Animals foundAnimal = animalsDao.findById(animals.getId());
         assertEquals(animals, foundAnimal);

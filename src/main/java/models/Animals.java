@@ -6,6 +6,7 @@ public class Animals implements Spotted_animal{
     private int id;
     private String name;
     private String location;
+    private String rangerName;
 
     public String getLocation() {
         return location;
@@ -23,7 +24,7 @@ public class Animals implements Spotted_animal{
         this.rangerName = rangerName;
     }
 
-    private String rangerName;
+
     private static ArrayList<Animals> mInstances = new ArrayList<>();
 
     public Animals( String name, String location, String rangerName){

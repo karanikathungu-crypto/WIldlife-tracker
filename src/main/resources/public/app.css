@@ -3,9 +3,8 @@
     padding:0;
 }
  body{
-    background-image:
-    background-position:center;
-    background-size:cover;
+    background-color: black;
+    color:white;
     font-family:sans-serif;
     margin-top: 50px;
  }
@@ -126,17 +125,18 @@
     font-size:18px;
     font-weight:700;
 
-
-
-
 }
 
 .btn{
-    border: 1px solid black;
+    border: 1px solid grey;
     border-radius: 8px;
 }
 
 .btn:hover{
-    background-color: grey;
-    color: white;
+    background-color: white;
+    color: black;
+}
+
+#content{
+    text-align: center;
 }
